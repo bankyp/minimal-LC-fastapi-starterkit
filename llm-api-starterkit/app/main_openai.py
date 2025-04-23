@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from langchain import OpenAI, PromptTemplate
 from langchain.chains import LLMChain
+from langchain.chat_models import ChatOpenAI
 
 # FASTAPI
 app = FastAPI()
@@ -10,7 +11,7 @@ app.add_middleware(
 )
 
 # LANGCHAIN
-langchain_llm = OpenAI(temperature=0)
+langchain_llm = ChatOpenAI(model_name="gpt-4o-mini", temperature=0)
 
 summarize_template_string = """
         Provide a summary for the following text:
